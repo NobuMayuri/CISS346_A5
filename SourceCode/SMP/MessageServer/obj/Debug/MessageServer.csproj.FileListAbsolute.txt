@@ -12,3 +12,17 @@ C:\Users\mjkoe\Dropbox\Code\CISS346\00_Assignments\05_SMP_Messenger\SMP_GUI_Clie
 C:\Users\mjkoe\Dropbox\Code\CISS346\00_Assignments\05_SMP_Messenger\SMP_GUI_Client_Server_V_1_Version_Field\MessageServer\obj\Debug\MessageS.41553B42.Up2Date
 C:\Users\mjkoe\Dropbox\Code\CISS346\00_Assignments\05_SMP_Messenger\SMP_GUI_Client_Server_V_1_Version_Field\MessageServer\obj\Debug\SMPServer.exe
 C:\Users\mjkoe\Dropbox\Code\CISS346\00_Assignments\05_SMP_Messenger\SMP_GUI_Client_Server_V_1_Version_Field\MessageServer\obj\Debug\SMPServer.pdb
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\bin\Debug\SMPServer.exe.config
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\bin\Debug\SMPServer.exe
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\bin\Debug\SMPServer.pdb
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\bin\Debug\SMP_Library.dll
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\bin\Debug\SMP_Library.pdb
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\bin\Debug\SMP_Library.dll.config
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\obj\Debug\MessageServer.csproj.AssemblyReference.cache
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\obj\Debug\SMPServer.FormSmpServer.resources
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\obj\Debug\SMPServer.Properties.Resources.resources
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\obj\Debug\MessageServer.csproj.GenerateResource.cache
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\obj\Debug\MessageServer.csproj.CoreCompileInputs.cache
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\obj\Debug\MessageS.41553B42.Up2Date
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\obj\Debug\SMPServer.exe
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\obj\Debug\SMPServer.pdb
