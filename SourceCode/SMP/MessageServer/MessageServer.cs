@@ -126,16 +126,51 @@ namespace SMPServer
             try
             {
                 StreamReader reader = new StreamReader("Messages.txt");
-                
-                string smpVersion = reader.ReadLine();
-                priority = reader.ReadLine();
-                string dateTime = reader.ReadLine();
-                string message = reader.ReadLine();
 
+                string targetSmpVersion = null;
+                string targetDateTime = null;
+                string targetMessage = null;
+
+                string newFileString = "";
+                bool foundTargetPacket = false;
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string smpVersion = line;
+                    string currPriority = reader.ReadLine();
+                    string dateTime = reader.ReadLine();
+                    string message = reader.ReadLine();
+                    string dummy = reader.ReadLine();
+
+                    if (!foundTargetPacket && priority == currPriority)
+                    {
+                        foundTargetPacket = true;
+                        targetSmpVersion = smpVersion;
+                        targetDateTime = dateTime;
+                        targetMessage = message;
+                    } else
+                    {
+                        newFileString += smpVersion + Environment.NewLine;
+                        newFileString += currPriority + Environment.NewLine;
+                        newFileString += dateTime + Environment.NewLine;
+                        newFileString += message + Environment.NewLine;
+                        newFileString += Environment.NewLine;
+                    }
+                }
                 reader.Close();
 
-                smpPacket = new SmpPacket(smpVersion, Enumerations.SmpMessageType.GetMessage.ToString(),
-                    dateTime, priority, message);
+                if (!foundTargetPacket)
+                {
+                    return new SmpPacket("", Enumerations.SmpMessageType.GetMessage.ToString(),
+                                "", "", "Error: no message with desired priority found");
+                }
+
+                StreamWriter writer = new StreamWriter("Messages.txt", false);
+                writer.Write(newFileString);
+                writer.Close();
+
+                smpPacket = new SmpPacket(targetSmpVersion, Enumerations.SmpMessageType.GetMessage.ToString(),
+                    targetDateTime, priority, targetMessage);
             }
             catch (Exception ex)
             {

@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\theam\\code\\346\\A5\\repo\\SourceCode\\SMP\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A24CEDDA-A4AA-4ECA-808F-0C5BCC8C7D27}|MessageServer\\MessageServer.csproj|c:\\users\\theam\\code\\346\\a5\\repo\\sourcecode\\smp\\messageserver\\messageserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A24CEDDA-A4AA-4ECA-808F-0C5BCC8C7D27}|MessageServer\\MessageServer.csproj|solutionrelative:messageserver\\messageserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D77160F5-577A-4D0E-BE89-532F7AE73D41}|MessageConsumer\\MessageConsumer.csproj|c:\\users\\theam\\code\\346\\a5\\repo\\sourcecode\\smp\\messageconsumer\\messageconsumerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D77160F5-577A-4D0E-BE89-532F7AE73D41}|MessageConsumer\\MessageConsumer.csproj|solutionrelative:messageconsumer\\messageconsumerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,28 +18,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MessageConsumerForm.cs",
-              "DocumentMoniker": "C:\\Users\\theam\\code\\346\\A5\\repo\\SourceCode\\SMP\\MessageConsumer\\MessageConsumerForm.cs",
-              "RelativeDocumentMoniker": "MessageConsumer\\MessageConsumerForm.cs",
-              "ToolTip": "C:\\Users\\theam\\code\\346\\A5\\repo\\SourceCode\\SMP\\MessageConsumer\\MessageConsumerForm.cs",
-              "RelativeToolTip": "MessageConsumer\\MessageConsumerForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T09:41:09.879Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MessageServer.cs",
+              "DocumentMoniker": "C:\\Users\\theam\\code\\346\\A5\\repo\\SourceCode\\SMP\\MessageServer\\MessageServer.cs",
+              "RelativeDocumentMoniker": "MessageServer\\MessageServer.cs",
+              "ToolTip": "C:\\Users\\theam\\code\\346\\A5\\repo\\SourceCode\\SMP\\MessageServer\\MessageServer.cs",
+              "RelativeToolTip": "MessageServer\\MessageServer.cs",
+              "ViewState": "AgIAAIIAAAAAAAAAAADwv5kAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T10:16:37.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MessageConsumerForm.cs",
+              "DocumentMoniker": "C:\\Users\\theam\\code\\346\\A5\\repo\\SourceCode\\SMP\\MessageConsumer\\MessageConsumerForm.cs",
+              "RelativeDocumentMoniker": "MessageConsumer\\MessageConsumerForm.cs",
+              "ToolTip": "C:\\Users\\theam\\code\\346\\A5\\repo\\SourceCode\\SMP\\MessageConsumer\\MessageConsumerForm.cs",
+              "RelativeToolTip": "MessageConsumer\\MessageConsumerForm.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAcwAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T09:41:09.879Z",
+              "EditorCaption": ""
             }
           ]
         }
