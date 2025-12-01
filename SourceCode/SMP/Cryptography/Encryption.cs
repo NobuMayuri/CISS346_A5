@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml.Serialization;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CryptographyUtilities
 {
@@ -117,8 +119,22 @@ namespace CryptographyUtilities
             return keyString;
         }
 
+        public static string StringToB64(string s)
+        {
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(s));
+        }
+        public static string B64ToString(string s)
+        {
+            return Encoding.UTF8.GetString(Convert.FromBase64String(s));
+        }
+
         public static void GeneratePublicPrivateKeyPair(string publicKeyFile, string privateKeyFile)
         {
+            if (File.Exists(publicKeyFile))
+            {
+                return;
+            }
+
             //RSACryptoServiceProvider: 2048-bit RSA Public/Private Key Pair
             RSACryptoServiceProvider cryptoService = new RSACryptoServiceProvider(2048);
 
@@ -155,11 +171,14 @@ namespace CryptographyUtilities
         StreamReader reader;
         RSAParameters clientPublicKey;
         string myPrivateKeyFilename;
+        Queue<string> lineQueue;
 
         public CryptNetworkStream(TcpClient client, string myPublicKeyFilename, string myPrivateKeyFilename, bool isServer) {
             ns = client.GetStream();
-            writer = new StreamWriter(ns);
+            writer = new StreamWriter(ns) { AutoFlush = true };
             reader = new StreamReader(ns);
+
+            lineQueue = new Queue<string>();
 
             this.myPrivateKeyFilename = myPrivateKeyFilename;
 
@@ -169,12 +188,12 @@ namespace CryptographyUtilities
             string clientPublicKeyXml;
             if (isServer)
             {
-                writer.WriteLine(myPublicKeyXml);
-                clientPublicKeyXml = reader.ReadLine();
+                writer.WriteLine(Encryption.StringToB64(myPublicKeyXml));
+                clientPublicKeyXml = Encryption.B64ToString(reader.ReadLine());
             } else
             {
-                clientPublicKeyXml = reader.ReadLine();
-                writer.WriteLine(myPublicKeyXml);
+                clientPublicKeyXml = Encryption.B64ToString(reader.ReadLine());
+                writer.WriteLine(Encryption.StringToB64(myPublicKeyXml));
             }
 
             clientPublicKey = Encryption.GetRsaParametersFromXml(clientPublicKeyXml);
@@ -182,13 +201,41 @@ namespace CryptographyUtilities
 
         public string ReadLine()
         {
-            string encryptedLine = reader.ReadLine();
-            return Encryption.DecryptMessage(encryptedLine, myPrivateKeyFilename);
+            if (lineQueue.Count > 0)
+            {
+                return lineQueue.Dequeue();
+            }
+
+            string encryptedInput = Encryption.B64ToString(reader.ReadLine());
+            string decryptedInput = Encryption.DecryptMessage(encryptedInput, myPrivateKeyFilename);
+
+            string[] lines = decryptedInput.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            
+            for (int i = 0; i < lines.Length; i++)
+            {
+                lineQueue.Enqueue(lines[i]);
+            }
+
+            return lineQueue.Dequeue();
         }
-        public void WriteLine(string line)
+        public string ReadToEnd()
         {
-            string encryptedLine = Encryption.EncryptMessage(line, clientPublicKey);
-            writer.WriteLine(encryptedLine);
+            string result = "";
+            while (lineQueue.Count > 0)
+            {
+                result += lineQueue.Dequeue() + Environment.NewLine;
+            }
+
+            string encryptedInput = Encryption.B64ToString(reader.ReadToEnd());
+            string decryptedInput = Encryption.DecryptMessage(encryptedInput, myPrivateKeyFilename);
+            result = result + decryptedInput;
+
+            return result;
+        }
+        public void Write(string input)
+        {
+            string encryptedInput = Encryption.StringToB64(Encryption.EncryptMessage(input, clientPublicKey));
+            writer.WriteLine(encryptedInput);
         }
 
         public void Close()

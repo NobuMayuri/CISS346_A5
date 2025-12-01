@@ -1,4 +1,5 @@
-﻿using SMP_Library;
+﻿using CryptographyUtilities;
+using SMP_Library;
 using System;
 using System.IO;
 using System.Net;
@@ -10,8 +11,13 @@ namespace SMPServer
     {
         public static event EventHandler<PacketEventArgs> PacketRecieved;
 
+        public static string publicKeyFile = "server_public_key";
+        public static string privateKeyFile = "server_private_key";
+
         public static void Start(object o)
         {
+            Encryption.GeneratePublicPrivateKeyPair(publicKeyFile, privateKeyFile);
+
             FormSmpServer form = o as FormSmpServer;
 
             if (form != null)
@@ -34,23 +40,26 @@ namespace SMPServer
 
         public static void ProcessConnection(TcpClient connection)
         {
-            NetworkStream networkStream = connection.GetStream();
+            //NetworkStream networkStream = connection.GetStream();
+            CryptNetworkStream cns = new CryptNetworkStream(connection, publicKeyFile, privateKeyFile, true);
 
-            StreamReader networkStreamReader = new StreamReader(networkStream);
+            //StreamReader networkStreamReader = new StreamReader(networkStream);
 
-            string version = networkStreamReader.ReadLine();
+            string version = cns.ReadLine();
 
             if (version == Enumerations.SmpVersion.Version_2_0.ToString())
             {
-                string messageType = networkStreamReader.ReadLine();
+                Console.WriteLine("got version: " + version);
+                string messageType = cns.ReadLine();
+                Console.WriteLine("got message type: " + messageType);
 
                 if (messageType == Enumerations.SmpMessageType.PutMessage.ToString())
                 {
-                    string priority = networkStreamReader.ReadLine();
-                    string dateTime = networkStreamReader.ReadLine();
-                    string message = networkStreamReader.ReadLine();
-                    string userId = networkStreamReader.ReadLine();
-                    string password = networkStreamReader.ReadLine();
+                    string priority = cns.ReadLine();
+                    string dateTime = cns.ReadLine();
+                    string message = cns.ReadLine();
+                    string userId = cns.ReadLine();
+                    string password = cns.ReadLine();
 
                     SmpPacket smpPacket = new SmpPacket(version, messageType, priority, dateTime, message, userId, password);
 
@@ -58,9 +67,9 @@ namespace SMPServer
 
                     string responsePacket = "Received Packet: " + DateTime.Now + Environment.NewLine;
 
-                    SendSmpResponsePacket(responsePacket, networkStream);
+                    SendSmpResponsePacket(responsePacket, cns);
 
-                    networkStreamReader.Close();
+                    cns.Close();
 
                     PacketEventArgs eventArgs = new PacketEventArgs(smpPacket);
 
@@ -68,11 +77,13 @@ namespace SMPServer
                 }
                 else if (messageType == Enumerations.SmpMessageType.GetMessage.ToString())
                 {
-                    string priority = networkStreamReader.ReadLine();
-                    string dateTime = networkStreamReader.ReadLine();
-                    string message = networkStreamReader.ReadLine();
-                    string userId = networkStreamReader.ReadLine();
-                    string password = networkStreamReader.ReadLine();
+                    string priority = cns.ReadLine();
+                    string dateTime = cns.ReadLine();
+                    string message = cns.ReadLine();
+                    string userId = cns.ReadLine();
+                    string password = cns.ReadLine();
+
+                    //Console.WriteLine("processed GetMessage priority: " + priority);
 
                     SmpPacket smpPacket = ProcessSmpGetPacket(priority, userId, password);
 
@@ -81,9 +92,9 @@ namespace SMPServer
 
                     string responsePacket = "Message Information: " + Environment.NewLine + record;
 
-                    SendSmpResponsePacket(responsePacket, networkStream);
+                    SendSmpResponsePacket(responsePacket, cns);
 
-                    networkStreamReader.Close();
+                    cns.Close();
 
                     PacketEventArgs eventArgs = new PacketEventArgs(smpPacket);
 
@@ -94,9 +105,9 @@ namespace SMPServer
             {
                 string responsePacket = "Unsupported Version: " + version + Environment.NewLine;
 
-                SendSmpResponsePacket(responsePacket, networkStream);
+                SendSmpResponsePacket(responsePacket, cns);
 
-                networkStreamReader.Close();
+                cns.Close();
             }
         }
 
@@ -174,7 +185,7 @@ namespace SMPServer
                 if (!foundTargetPacket)
                 {
                     return new SmpPacket("", Enumerations.SmpMessageType.GetMessage.ToString(),
-                                "", "", "Error: no message with desired specifications found", "", "");
+                                priority, "", "Error: no message with desired specifications found", userId, password);
                 }
 
                 StreamWriter writer = new StreamWriter("Messages.txt", false);
@@ -182,7 +193,7 @@ namespace SMPServer
                 writer.Close();
 
                 smpPacket = new SmpPacket(targetSmpVersion, Enumerations.SmpMessageType.GetMessage.ToString(),
-                    targetDateTime, priority, targetMessage, userId, password);
+                    priority, targetDateTime, targetMessage, userId, password);
             }
             catch (Exception ex)
             {
@@ -191,13 +202,9 @@ namespace SMPServer
 
             return smpPacket;
         }
-        private static void SendSmpResponsePacket(String responsePacket, NetworkStream dataStream)
+        private static void SendSmpResponsePacket(String responsePacket, CryptNetworkStream cns)
         {
-            StreamWriter writer = new StreamWriter(dataStream);
-
-            writer.WriteLine(responsePacket);
-
-            writer.Close();
+            cns.Write(responsePacket);
         }
     }
 }

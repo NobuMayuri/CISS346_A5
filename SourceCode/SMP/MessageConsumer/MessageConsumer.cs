@@ -11,28 +11,29 @@ namespace SMPClientConsumer
         public static event EventHandler<SMPResponsePacketEventArgs> SMPResponsePacketRecieved;
 
         public static string publicKeyFile = "consumer_public_key";
-        public static string privateKeyFile = "consumer_public_key";
+        public static string privateKeyFile = "consumer_private_key";
 
         public static void SendSmpPacket(string serverIpAddress, int port, SmpPacket smpPacket)
         {
             Encryption.GeneratePublicPrivateKeyPair(publicKeyFile, privateKeyFile);
             
             TcpClient client = new TcpClient(serverIpAddress, port);
-            NetworkStream networkStream = client.GetStream();
-            //CryptNetworkStream cns = new CryptNetworkStream(client, publicKeyFile, privateKeyFile, false);
+            //NetworkStream networkStream = client.GetStream();
+            CryptNetworkStream cns = new CryptNetworkStream(client, publicKeyFile, privateKeyFile, false);
 
             //Send the SMP packet
-            StreamWriter writer = new StreamWriter(networkStream);
-            writer.WriteLine(smpPacket);
-            writer.Flush();
+            //StreamWriter writer = new StreamWriter(networkStream);
+            cns.Write(smpPacket.ToString());
+            //writer.Flush();
 
             //Receive SMP Response from server
-            StreamReader reader = new StreamReader(networkStream);
-            string responsePacket = reader.ReadToEnd();
+            //StreamReader reader = new StreamReader(networkStream);
+            string responsePacket = cns.ReadToEnd();
 
             //Done with the server
-            reader.Close();
-            writer.Close();
+            //reader.Close();
+            //writer.Close();
+            cns.Close();
 
             ProcessSmpResponsePacket(responsePacket);
         }

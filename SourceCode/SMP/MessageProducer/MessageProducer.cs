@@ -1,8 +1,9 @@
-﻿using System;
+﻿using CryptographyUtilities;
+using SMP_Library;
+using System;
 using System.IO;
 using System.Net.Sockets;
 using System.Windows.Forms;
-using SMP_Library;
 
 namespace SMPClientProducer
 {
@@ -10,23 +11,24 @@ namespace SMPClientProducer
     {
         public static event EventHandler<SMPResponsePacketEventArgs> SMPResponsePacketRecieved;
 
+        public static string publicKeyFile = "producer_public_key";
+        public static string privateKeyFile = "producer_private_key";
+
         public static void SendSmpPacket(string serverIpAddress, int port, SmpPacket smpPacket)
         {
+            Encryption.GeneratePublicPrivateKeyPair(publicKeyFile, privateKeyFile);
+
             TcpClient client = new TcpClient(serverIpAddress, port);
-            NetworkStream networkStream = client.GetStream();
+            CryptNetworkStream cns = new CryptNetworkStream(client, publicKeyFile, privateKeyFile, false);
 
             //Send the SMP packet
-            StreamWriter writer = new StreamWriter(networkStream);
-            writer.WriteLine(smpPacket);
-            writer.Flush();
+            cns.Write(smpPacket.ToString());
 
             //Receive SMP Response from server
-            StreamReader reader = new StreamReader(networkStream);
-            string responsePacket = reader.ReadLine();
+            string responsePacket = cns.ReadLine();
 
             //Done with the server
-            reader.Close();
-            writer.Close();
+            cns.Close();
 
             ProcessSmpResponsePacket(responsePacket);
         }
