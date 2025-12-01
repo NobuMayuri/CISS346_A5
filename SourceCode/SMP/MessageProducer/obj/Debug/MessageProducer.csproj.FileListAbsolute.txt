@@ -26,3 +26,5 @@ C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageProducer\obj\Debug\Message
 C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageProducer\obj\Debug\MessageP.9BD23C3F.Up2Date
 C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageProducer\obj\Debug\SMPClientProducer.exe
 C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageProducer\obj\Debug\SMPClientProducer.pdb
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageProducer\bin\Debug\Cryptography.dll
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageProducer\bin\Debug\Cryptography.pdb

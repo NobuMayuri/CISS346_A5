@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Sockets;
+using CryptographyUtilities;
 using SMP_Library;
 
 namespace SMPClientConsumer
@@ -9,10 +10,16 @@ namespace SMPClientConsumer
     {
         public static event EventHandler<SMPResponsePacketEventArgs> SMPResponsePacketRecieved;
 
+        public static string publicKeyFile = "consumer_public_key";
+        public static string privateKeyFile = "consumer_public_key";
+
         public static void SendSmpPacket(string serverIpAddress, int port, SmpPacket smpPacket)
         {
+            Encryption.GeneratePublicPrivateKeyPair(publicKeyFile, privateKeyFile);
+            
             TcpClient client = new TcpClient(serverIpAddress, port);
             NetworkStream networkStream = client.GetStream();
+            //CryptNetworkStream cns = new CryptNetworkStream(client, publicKeyFile, privateKeyFile, false);
 
             //Send the SMP packet
             StreamWriter writer = new StreamWriter(networkStream);

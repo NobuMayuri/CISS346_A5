@@ -26,3 +26,5 @@ C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageConsumer\obj\Debug\Message
 C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageConsumer\obj\Debug\MessageC.EBF22B66.Up2Date
 C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageConsumer\obj\Debug\SMPClientConsumer.exe
 C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageConsumer\obj\Debug\SMPClientConsumer.pdb
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageConsumer\bin\Debug\Cryptography.dll
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageConsumer\bin\Debug\Cryptography.pdb

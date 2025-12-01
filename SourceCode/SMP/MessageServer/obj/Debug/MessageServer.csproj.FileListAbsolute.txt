@@ -26,3 +26,5 @@ C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\obj\Debug\MessageSe
 C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\obj\Debug\MessageS.41553B42.Up2Date
 C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\obj\Debug\SMPServer.exe
 C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\obj\Debug\SMPServer.pdb
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\bin\Debug\Cryptography.dll
+C:\Users\theam\code\346\A5\repo\SourceCode\SMP\MessageServer\bin\Debug\Cryptography.pdb
