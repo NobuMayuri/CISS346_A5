@@ -1,12 +1,68 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\mjkoe\\Dropbox\\Code\\CISS346\\00_Assignments\\05_SMP_Messenger\\SMP_GUI_Client_Server_V_1_Version_Field\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Kieran Rapo\\Desktop\\Assignment_05\\CISS346_A5\\SourceCode\\SMP\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A24CEDDA-A4AA-4ECA-808F-0C5BCC8C7D27}|MessageServer\\MessageServer.csproj|c:\\users\\kieran rapo\\desktop\\assignment_05\\ciss346_a5\\sourcecode\\smp\\messageserver\\messageserverform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A24CEDDA-A4AA-4ECA-808F-0C5BCC8C7D27}|MessageServer\\MessageServer.csproj|solutionrelative:messageserver\\messageserverform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAFBEB37-9C57-4123-A20A-63E2CA54B698}|MessageProducer\\MessageProducer.csproj|c:\\users\\kieran rapo\\desktop\\assignment_05\\ciss346_a5\\sourcecode\\smp\\messageproducer\\messageproducerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{AAFBEB37-9C57-4123-A20A-63E2CA54B698}|MessageProducer\\MessageProducer.csproj|solutionrelative:messageproducer\\messageproducerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D77160F5-577A-4D0E-BE89-532F7AE73D41}|MessageConsumer\\MessageConsumer.csproj|c:\\users\\kieran rapo\\desktop\\assignment_05\\ciss346_a5\\sourcecode\\smp\\messageconsumer\\messageconsumerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D77160F5-577A-4D0E-BE89-532F7AE73D41}|MessageConsumer\\MessageConsumer.csproj|solutionrelative:messageconsumer\\messageconsumerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MessageServerForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Kieran Rapo\\Desktop\\Assignment_05\\CISS346_A5\\SourceCode\\SMP\\MessageServer\\MessageServerForm.cs",
+              "RelativeDocumentMoniker": "MessageServer\\MessageServerForm.cs",
+              "ToolTip": "C:\\Users\\Kieran Rapo\\Desktop\\Assignment_05\\CISS346_A5\\SourceCode\\SMP\\MessageServer\\MessageServerForm.cs [Design]",
+              "RelativeToolTip": "MessageServer\\MessageServerForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T04:18:26.202Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MessageProducerForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Kieran Rapo\\Desktop\\Assignment_05\\CISS346_A5\\SourceCode\\SMP\\MessageProducer\\MessageProducerForm.cs",
+              "RelativeDocumentMoniker": "MessageProducer\\MessageProducerForm.cs",
+              "ToolTip": "C:\\Users\\Kieran Rapo\\Desktop\\Assignment_05\\CISS346_A5\\SourceCode\\SMP\\MessageProducer\\MessageProducerForm.cs [Design]",
+              "RelativeToolTip": "MessageProducer\\MessageProducerForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T04:18:17.22Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MessageConsumerForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Kieran Rapo\\Desktop\\Assignment_05\\CISS346_A5\\SourceCode\\SMP\\MessageConsumer\\MessageConsumerForm.cs",
+              "RelativeDocumentMoniker": "MessageConsumer\\MessageConsumerForm.cs",
+              "ToolTip": "C:\\Users\\Kieran Rapo\\Desktop\\Assignment_05\\CISS346_A5\\SourceCode\\SMP\\MessageConsumer\\MessageConsumerForm.cs [Design]",
+              "RelativeToolTip": "MessageConsumer\\MessageConsumerForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T04:18:09.824Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
