@@ -40,7 +40,7 @@ namespace SMPServer
 
             string version = networkStreamReader.ReadLine();
 
-            if (version == Enumerations.SmpVersion.Version_1_0.ToString())
+            if (version == Enumerations.SmpVersion.Version_2_0.ToString())
             {
                 string messageType = networkStreamReader.ReadLine();
 
@@ -69,6 +69,8 @@ namespace SMPServer
                 else if (messageType == Enumerations.SmpMessageType.GetMessage.ToString())
                 {
                     string priority = networkStreamReader.ReadLine();
+                    string dateTime = networkStreamReader.ReadLine();
+                    string message = networkStreamReader.ReadLine();
                     string userId = networkStreamReader.ReadLine();
                     string password = networkStreamReader.ReadLine();
 

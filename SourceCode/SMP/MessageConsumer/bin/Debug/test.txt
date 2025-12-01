@@ -1,0 +1,7 @@
+Version_1_0
+GetMessage
+1
+
+
+a
+b

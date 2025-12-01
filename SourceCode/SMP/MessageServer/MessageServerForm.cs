@@ -57,9 +57,13 @@ namespace SMPServer
                 {
                     string messageType = eventArgs.SmpPacket.MessageType.ToString();
                     string messagePriority = eventArgs.SmpPacket.Priority;
+                    string userId = eventArgs.SmpPacket.UserId;
+                    string password = eventArgs.SmpPacket.Password;
 
                     textBoxMessageType.Text = messageType;
                     textBoxMessagePriority.Text = messagePriority;
+                    textBoxUserID.Text = userId;
+                    textBoxPassword.Text = password;
                 }
             }
             catch (Exception ex)

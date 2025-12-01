@@ -4,7 +4,8 @@
     {
         public enum SmpVersion
         {
-            Version_1_0
+            Version_1_0,
+            Version_2_0
         }
         public enum SmpMessageType
         {
