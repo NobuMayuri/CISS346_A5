@@ -44,13 +44,14 @@
             this.textBoxPortNumber = new System.Windows.Forms.TextBox();
             this.textBoxServerIPAddress = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxMessagePriority = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxUserID = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxMessagePriority = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.buttonClearMessages = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -247,35 +248,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Last Received Message";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(244, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 16);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Message Priority";
-            // 
-            // textBoxMessagePriority
-            // 
-            this.textBoxMessagePriority.Location = new System.Drawing.Point(372, 59);
-            this.textBoxMessagePriority.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxMessagePriority.Multiline = true;
-            this.textBoxMessagePriority.Name = "textBoxMessagePriority";
-            this.textBoxMessagePriority.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBoxMessagePriority.Size = new System.Drawing.Size(118, 25);
-            this.textBoxMessagePriority.TabIndex = 11;
-            this.textBoxMessagePriority.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 16);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Message Type";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -316,11 +288,52 @@
             this.textBoxUserID.TabIndex = 13;
             this.textBoxUserID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(244, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(108, 16);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Message Priority";
+            // 
+            // textBoxMessagePriority
+            // 
+            this.textBoxMessagePriority.Location = new System.Drawing.Point(372, 59);
+            this.textBoxMessagePriority.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxMessagePriority.Multiline = true;
+            this.textBoxMessagePriority.Name = "textBoxMessagePriority";
+            this.textBoxMessagePriority.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.textBoxMessagePriority.Size = new System.Drawing.Size(118, 25);
+            this.textBoxMessagePriority.TabIndex = 11;
+            this.textBoxMessagePriority.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 16);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Message Type";
+            // 
+            // buttonClearMessages
+            // 
+            this.buttonClearMessages.Location = new System.Drawing.Point(18, 516);
+            this.buttonClearMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonClearMessages.Name = "buttonClearMessages";
+            this.buttonClearMessages.Size = new System.Drawing.Size(182, 38);
+            this.buttonClearMessages.TabIndex = 8;
+            this.buttonClearMessages.Text = "Clear Messages File";
+            this.buttonClearMessages.UseVisualStyleBackColor = true;
+            this.buttonClearMessages.Click += new System.EventHandler(this.buttonClearMessages_Click);
+            // 
             // FormSmpServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 523);
+            this.ClientSize = new System.Drawing.Size(542, 569);
+            this.Controls.Add(this.buttonClearMessages);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -367,6 +380,7 @@
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxUserID;
+        private System.Windows.Forms.Button buttonClearMessages;
     }
 }
 

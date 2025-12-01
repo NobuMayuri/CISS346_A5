@@ -32,11 +32,13 @@ namespace SMPClientProducer
             }
 
             string message = textBoxMessageContent.Text;
+            string userId = textBoxUserID.Text;
+            string password = textBoxPassword.Text;
 
             //Build the SMP packet
             SmpPacket smpPacket = new SmpPacket(Enumerations.SmpVersion.Version_1_0.ToString(),
                 Enumerations.SmpMessageType.PutMessage.ToString(), priority.ToString(), DateTime.Now.ToString(),
-                message);
+                message, userId, password);
 
             //Send the packet
             MessageProducer.SendSmpPacket(textBoxServerIPAddress.Text,

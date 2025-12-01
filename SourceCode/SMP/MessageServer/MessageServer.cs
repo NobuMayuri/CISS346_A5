@@ -49,8 +49,10 @@ namespace SMPServer
                     string priority = networkStreamReader.ReadLine();
                     string dateTime = networkStreamReader.ReadLine();
                     string message = networkStreamReader.ReadLine();
+                    string userId = networkStreamReader.ReadLine();
+                    string password = networkStreamReader.ReadLine();
 
-                    SmpPacket smpPacket = new SmpPacket(version, messageType, priority, dateTime, message);
+                    SmpPacket smpPacket = new SmpPacket(version, messageType, priority, dateTime, message, userId, password);
 
                     ProcessSmpPutPacket(smpPacket);
 
@@ -67,8 +69,10 @@ namespace SMPServer
                 else if (messageType == Enumerations.SmpMessageType.GetMessage.ToString())
                 {
                     string priority = networkStreamReader.ReadLine();
+                    string userId = networkStreamReader.ReadLine();
+                    string password = networkStreamReader.ReadLine();
 
-                    SmpPacket smpPacket = ProcessSmpGetPacket(priority);
+                    SmpPacket smpPacket = ProcessSmpGetPacket(priority, userId, password);
 
                     string record = smpPacket.DateTime + Environment.NewLine;
                     record += smpPacket.Message + Environment.NewLine;
@@ -104,6 +108,8 @@ namespace SMPServer
                     record += smpPacket.Priority + Environment.NewLine;
                     record += smpPacket.DateTime + Environment.NewLine;
                     record += smpPacket.Message + Environment.NewLine;
+                    record += smpPacket.UserId + Environment.NewLine;
+                    record += smpPacket.Password + Environment.NewLine;
 
                     StreamWriter writer = new StreamWriter("Messages.txt", true);
 
@@ -119,7 +125,7 @@ namespace SMPServer
             }
         }
 
-        private static SmpPacket ProcessSmpGetPacket(string priority)
+        private static SmpPacket ProcessSmpGetPacket(string priority, string userId, string password)
         {
             SmpPacket smpPacket = null;
 
@@ -140,9 +146,11 @@ namespace SMPServer
                     string currPriority = reader.ReadLine();
                     string dateTime = reader.ReadLine();
                     string message = reader.ReadLine();
+                    string currUserId = reader.ReadLine();
+                    string currPassword = reader.ReadLine();
                     string dummy = reader.ReadLine();
 
-                    if (!foundTargetPacket && priority == currPriority)
+                    if (!foundTargetPacket && priority == currPriority && userId == currUserId && password == currPassword)
                     {
                         foundTargetPacket = true;
                         targetSmpVersion = smpVersion;
@@ -154,6 +162,8 @@ namespace SMPServer
                         newFileString += currPriority + Environment.NewLine;
                         newFileString += dateTime + Environment.NewLine;
                         newFileString += message + Environment.NewLine;
+                        newFileString += currUserId + Environment.NewLine;
+                        newFileString += currPassword + Environment.NewLine;
                         newFileString += Environment.NewLine;
                     }
                 }
@@ -162,7 +172,7 @@ namespace SMPServer
                 if (!foundTargetPacket)
                 {
                     return new SmpPacket("", Enumerations.SmpMessageType.GetMessage.ToString(),
-                                "", "", "Error: no message with desired priority found");
+                                "", "", "Error: no message with desired specifications found", "", "");
                 }
 
                 StreamWriter writer = new StreamWriter("Messages.txt", false);
@@ -170,7 +180,7 @@ namespace SMPServer
                 writer.Close();
 
                 smpPacket = new SmpPacket(targetSmpVersion, Enumerations.SmpMessageType.GetMessage.ToString(),
-                    targetDateTime, priority, targetMessage);
+                    targetDateTime, priority, targetMessage, userId, password);
             }
             catch (Exception ex)
             {
